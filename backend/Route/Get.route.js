@@ -1,7 +1,7 @@
 
 
    const express = require("express")
-const { CompanyModel } = require("../Models/company.model")
+   const { CompanyModel } = require("../Models/company.model")
 
    const getRouter = express.Router()
 
