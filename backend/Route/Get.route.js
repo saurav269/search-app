@@ -12,7 +12,7 @@
       const newLine = [
         {$match :{$text :{$search : keyword}}},
         {$project : {
-            _id : 0, 
+            _id : 1, 
             name : 1,
             url : 1,
             primaryText : 1,
