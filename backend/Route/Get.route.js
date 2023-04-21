@@ -5,19 +5,34 @@
 
    const getRouter = express.Router()
 
-   getRouter.get('/', async(req,res) =>{
+   getRouter.get('/api/ads/search', async(req,res) =>{
 
-    const name = req.query.name || "" 
-        try{
-            const products = await CompanyModel.find({
-                name : {$regex : name}
-            })
-            res.send(products)
-        }catch(err){
+      const {keyword} = req.query
+        
+      const newLine = [
+        {$match :{$text :{$search : keyword}}},
+        {$project : {
+            _id : 0, 
+            name : 1,
+            url : 1,
+            primaryText : 1,
+            headline : 1,
+            description : 1,
+            CTA : 1,
+            imageUrl : 1
+        }},
+        {$unwind : '$imageUrl'},
+        {$sort : {name : 1}}
+      ]
 
-            console.log(err)
-            res.send(err)
-        }
+      try{
+        const ads = await CompanyModel.aggregate(newLine)
+        res.json(ads)
+
+      }catch(err){
+        console.log(err)
+        res.send(err)
+      }
    })
 
    module.exports = {getRouter}

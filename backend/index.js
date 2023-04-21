@@ -20,9 +20,8 @@ const { getRouter } = require("./Route/Get.route")
 
   app.use('/company/add', postRouter)
 
-  app.use('/adds', getRouter)
-
-
+  app.use('/', getRouter)
+  
   app.listen(5000, async() =>{
 
     try{
