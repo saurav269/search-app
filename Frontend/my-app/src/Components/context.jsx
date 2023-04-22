@@ -10,7 +10,7 @@ const initialState = {
 }
   //let API = 'http://localhost:5000/all'
 
- let API1 = 'http://localhost:5000/api/ads/search?'
+ let API1 = 'https://real-ruby-turkey-coat.cyclic.app/api/ads/search?'
    //
    //http://localhost:5000/api/ads/search?
 
