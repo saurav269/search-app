@@ -5,6 +5,7 @@
 const { connection } = require("./config/db")
 const { postRouter } = require("./Route/Post.route")
 const { getRouter } = require("./Route/Get.route")
+const { allRouter } = require("./Route/All.route")
 
 
 
@@ -21,6 +22,8 @@ const { getRouter } = require("./Route/Get.route")
   app.use('/company/add', postRouter)
 
   app.use('/', getRouter)
+
+  app.use('/all', allRouter)
   
   app.listen(5000, async() =>{
 
